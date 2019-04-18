@@ -279,6 +279,7 @@ function rules_ui_add_element($form, &$form_state, $rules_config, $plugin_name, 
       '#ajax' => rules_ui_form_default_ajax() + array(
         'trigger_as' => array('name' => 'continue'),
       ),
+      '#chosen' => TRUE,
     );
     $form['continue'] = array(
       '#type' => 'submit',
@@ -467,6 +468,7 @@ function rules_ui_add_event($form, &$form_state, RulesReactionRule $rules_config
     '#description' => t('Whenever the event occurs, rule evaluation is triggered.'),
     '#ajax' => rules_ui_form_default_ajax(),
     '#required' => TRUE,
+    '#chosen' => TRUE,
   );
   if (!empty($form_state['values']['event'])) {
     $handler = rules_get_event_handler($form_state['values']['event']);
@@ -756,6 +758,7 @@ function rules_ui_element_duration_process($element, &$form_state) {
     '#type' => 'select',
     '#options' => rules_ui_element_duration_multipliers(),
     '#default_value' => 1,
+    '#chosen' => TRUE,
   );
 
   // Put the child elements in a container-inline div.

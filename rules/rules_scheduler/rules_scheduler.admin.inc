@@ -52,6 +52,7 @@ function rules_scheduler_form($form, &$form_state) {
     '#options' => $config_options,
     '#description' => t('Select the component for which to delete all scheduled tasks.'),
     '#required' => TRUE,
+    '#chosen' => TRUE,
   );
   $form['delete_by_config']['submit'] = array(
     '#type' => 'submit',

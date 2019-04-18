@@ -208,6 +208,7 @@ class RulesDataUIText extends RulesDataUI implements RulesDataDirectInputFormInt
       $form[$name] = array(
         '#type' => 'select',
         '#options' => call_user_func($info['options list'], $element, $name),
+        '#chosen' => TRUE,
       );
     }
     else {

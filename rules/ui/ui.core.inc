@@ -660,6 +660,7 @@ class RulesPluginUI extends FacesExtender implements RulesPluginUIInterface {
       '#type' => 'select',
       '#options' => array(0 => '--') + RulesPluginUI::getOptions('data'),
       '#default_value' => isset($info['type']) ? $info['type'] : 0,
+      '#chosen' => TRUE,
     );
     $form['label'] = array(
       '#type' => 'textfield',
@@ -684,6 +685,7 @@ class RulesPluginUI extends FacesExtender implements RulesPluginUIInterface {
         '11' => t('Parameter + Provided'),
         '01' => t('Provided'),
       ),
+      '#chosen' => TRUE,
     );
     if ($this->element instanceof RulesConditionContainer) {
       $form['usage']['#disabled'] = TRUE;

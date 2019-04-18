@@ -348,6 +348,7 @@ class RulesEventHandlerEntityBundle extends RulesEventHandlerBase {
       '#default_value' => $this->settings['bundle'],
       '#empty_value' => '',
       '#options' => array(),
+      '#chosen' => TRUE,
     );
     foreach ($this->entityInfo['bundles'] as $name => $bundle_info) {
       $form['bundle']['#options'][$name] = $bundle_info['label'];

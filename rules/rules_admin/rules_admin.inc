@@ -49,12 +49,14 @@ function rules_admin_reaction_overview($form, &$form_state, $base_path) {
     '#title' => t('Filter by event'),
     '#options' => array(0 => t('<All>')) + RulesPluginUI::getOptions('event'),
     '#default_value' => $event,
+    '#chosen' => TRUE,
   );
   $form['filter']['tag'] = array(
     '#type' => 'select',
     '#title' => t('Filter by tag'),
     '#options' => array(0 => t('<All>')) + RulesPluginUI::getTags(),
     '#default_value' => $tag,
+    '#chosen' => TRUE,
   );
   $form['filter']['submit'] = array(
     '#type' => 'submit',
@@ -119,12 +121,14 @@ function rules_admin_components_overview($form, &$form_state, $base_path) {
     '#title' => t('Filter by plugin'),
     '#options' => array(0 => t('<All>')) + rules_admin_component_options(),
     '#default_value' => $plugin,
+    '#chosen' => TRUE,
   );
   $form['filter']['tag'] = array(
     '#type' => 'select',
     '#title' => t('Filter by tag'),
     '#options' => array(0 => '<All>') + RulesPluginUI::getTags(),
     '#default_value' => $tag,
+    '#chosen' => TRUE,
   );
   $form['filter']['submit'] = array(
     '#type' => 'submit',
@@ -169,6 +173,7 @@ function rules_admin_settings($form, &$form_state) {
       '#description' => t('Choose the path cleaning method to be applied when generating URL path aliases.') . ' ' . $pathauto_help,
       '#default_value' => variable_get('rules_path_cleaning_callback', 'rules_path_default_cleaning_method'),
       '#options' => $options,
+      '#chosen' => TRUE,
     );
   }
 
@@ -223,6 +228,7 @@ function rules_admin_settings($form, &$form_state) {
     '#description' => t("The region, where the debug log should be displayed on the default theme %theme. For other themes, Rules will try to display the log on the same region, or hide it in case it doesn't exist.", array('%theme' => $theme_default)),
     '#options' => system_region_list($theme_default, REGIONS_VISIBLE),
     '#default_value' => variable_get('rules_debug_region_' . $theme_default, 'help'),
+    '#chosen' => TRUE,
   );
 
   $form['debug']['regions']['rules_debug_region_' . $admin_theme] = array(
@@ -231,6 +237,7 @@ function rules_admin_settings($form, &$form_state) {
     '#description' => t('The region, where the debug log should be displayed on the admin theme %theme.', array('%theme' => $admin_theme)),
     '#options' => system_region_list($admin_theme, REGIONS_VISIBLE),
     '#default_value' => variable_get('rules_debug_region_' . $admin_theme, 'help'),
+    '#chosen' => TRUE,
   );
   if (db_table_exists('rules_rules')) {
     drupal_set_message(t('There are left over rule configurations from a previous Rules 1.x installation. Proceed to the <a href="!url">upgrade page</a> to convert them and consult the README.txt for more details.', array('!url' => url('admin/config/workflow/rules/upgrade'))), 'warning');
@@ -372,6 +379,7 @@ function rules_admin_add_component($form, &$form_state, $base_path) {
       array('@url' => rules_external_help('component-types'))),
     '#weight' => -2,
     '#default_value' => isset($form_state['values']['plugin_name']) ? $form_state['values']['plugin_name'] : '',
+    '#chosen' => TRUE,
   );
 
   if (!isset($form_state['rules_config'])) {

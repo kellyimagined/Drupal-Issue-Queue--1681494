@@ -60,6 +60,7 @@ function rules_upgrade_form($form, &$form_state) {
     '#title' => t('Rules'),
     '#options' => $option_rules,
     '#multiple' => TRUE,
+    '#chosen' => TRUE,
   );
 
   $form['sets'] = array(
@@ -67,6 +68,7 @@ function rules_upgrade_form($form, &$form_state) {
     '#title' => t('Rule sets'),
     '#options' => $option_sets,
     '#multiple' => TRUE,
+    '#chosen' => TRUE,
   );
   $form['method'] = array(
     '#type' => 'radios',

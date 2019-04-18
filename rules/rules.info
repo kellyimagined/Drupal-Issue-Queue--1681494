@@ -27,6 +27,7 @@ files[] = tests/rules_test.rules.inc
 
 dependencies[] = entity_token
 dependencies[] = entity
+dependencies[] = chosen
 
 ; Information added by Drupal.org packaging script on 2019-03-22
 version = "7.x-2.12+6-dev"
